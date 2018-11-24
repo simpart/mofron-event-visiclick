@@ -1,21 +1,23 @@
 /**
- * @file mofron-event-visiswh/index.js
+ * @file mofron-event-visiclick/index.js
  * @brief visible switch click event for mofron
  * @author simpart
  */
 const mf = require('mofron');
 const Click = require('mofron-event-click');
 
-/**
- * @class mofron.event.VisiSwh
- * @brief VisiSwh event class for component
- */
 mf.event.VisiSwh = class extends Click {
-    
+    /**
+     * initilize event
+     *
+     * @param p1 (object) event option
+     * @param p1 (string) visible mode
+     * @param p2 (Component) target component
+     */
     constructor (po, p2) {
         try {
             super();
-            this.name('VisiSwh');
+            this.name('VisiClick');
             this.prmMap('mode', 'tgtComp');
             this.prmOpt(po, p2);
             this.handler(
@@ -41,6 +43,13 @@ mf.event.VisiSwh = class extends Click {
         }
     }
     
+    /**
+     * target component setter/getter
+     *
+     * @param p1 (Component) set visible target component
+     * @param p1 (undefined) call as getter
+     * @return (Component) visible target component
+     */
     tgtComp (prm) {
         try {
             if (undefined === prm) {
@@ -58,22 +67,21 @@ mf.event.VisiSwh = class extends Click {
         }
     }
     
+    /**
+     * visible mode setter/getter
+     *
+     * @param p1 (string) visible mode ('enable', 'disable', 'switch')
+     * @param p1 (undefined) call as getter
+     * @return (string) visible mode
+     */
     mode (prm) {
         try {
-            if (undefined === prm) {
-                /* getter */
-                return (undefined === this.m_mode) ? 'switch' : this.m_mode;
-            }
-            /* setter */
-            if (('enable' !== prm) && ('disable' !== prm) && ('switch' !== prm)) {
-                throw new Error('invalid parameter');
-            }
-            this.m_mode = prm;
+            return this.member('mode', ['enable', 'disable', 'switch'], prm, 'switch');
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
 }
-module.exports = mofron.event.VisiSwh;
+module.exports = mofron.event.VisiClick;
 /* end of file */

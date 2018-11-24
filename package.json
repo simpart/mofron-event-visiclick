@@ -1,5 +1,5 @@
 {
-  "name": "mofron-event-visiswh",
+  "name": "mofron-event-visiclick",
   "version": "0.0.1",
   "description": "visible switch click event for mofron",
   "main": "index.js",
