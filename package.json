@@ -1,6 +1,6 @@
 {
   "name": "mofron-event-visiclick",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "visible switch click event for mofron",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simpart/mofron-event-visiswh.git"
+    "url": "git+https://github.com/simpart/mofron-event-visiclick.git"
   },
   "dependencies": {
       "mofron-event-click" : ""
@@ -19,7 +19,7 @@
   "author": "simparts",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simpart/mofron-event-visiswh/issues"
+    "url": "https://github.com/simpart/mofron-event-visiclick/issues"
   },
-  "homepage": "https://github.com/simpart/mofron-event-visiswh#readme"
+  "homepage": "https://github.com/simpart/mofron-event-visiclick#readme"
 }

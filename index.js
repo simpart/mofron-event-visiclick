@@ -6,7 +6,7 @@
 const mf = require('mofron');
 const Click = require('mofron-event-click');
 
-mf.event.VisiSwh = class extends Click {
+mf.event.VisiClick = class extends Click {
     /**
      * initilize event
      *
