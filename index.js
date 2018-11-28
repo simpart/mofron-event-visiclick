@@ -18,7 +18,7 @@ mf.event.VisiClick = class extends Click {
         try {
             super();
             this.name('VisiClick');
-            this.prmMap('mode', 'tgtComp');
+            this.prmMap(['mode', 'tgtComp']);
             this.prmOpt(po, p2);
             this.handler(
                 (tgt, vs) => {
@@ -27,6 +27,8 @@ mf.event.VisiClick = class extends Click {
                             vs.tgtComp().visible(true);
                         } else if ('disable' === vs.mode()) {
                             vs.tgtComp().visible(false);
+                        } else if ('destroy' === vs.mode()) {
+                            vs.tgtComp().destroy();
                         } else if ('switch' === vs.mode()) {
                             vs.tgtComp().visible(!vs.tgtComp().visible());
                         }
@@ -76,7 +78,7 @@ mf.event.VisiClick = class extends Click {
      */
     mode (prm) {
         try {
-            return this.member('mode', ['enable', 'disable', 'switch'], prm, 'switch');
+            return this.member('mode', ['enable', 'disable', 'destroy', 'switch'], prm, 'switch');
         } catch (e) {
             console.error(e.stack);
             throw e;
