@@ -24,13 +24,13 @@ mf.event.VisiClick = class extends Click {
                 (tgt, vs) => {
                     try {
                         if ('enable' === vs.mode()) {
-                            vs.tgtComp().visible(true);
+                            vs.tgtComp().visible(true, this.tgtParam());
                         } else if ('disable' === vs.mode()) {
-                            vs.tgtComp().visible(false);
+                            vs.tgtComp().visible(false, this.tgtParam());
                         } else if ('destroy' === vs.mode()) {
-                            vs.tgtComp().destroy();
+                            vs.tgtComp().destroy(this.tgtParam());
                         } else if ('switch' === vs.mode()) {
-                            vs.tgtComp().visible(!vs.tgtComp().visible());
+                            vs.tgtComp().visible(!vs.tgtComp().visible(), this.tgtParam());
                         }
                     } catch (e) {
                         console.error(e.stack);
@@ -63,6 +63,15 @@ mf.event.VisiClick = class extends Click {
                 throw new Error('invalid parameter');
             }
             this.m_tgtcomp = prm;
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    tgtParam (prm) {
+        try {
+            return (undefined === prm) ? this.m_tgtprm : this.m_tgtprm = prm;
         } catch (e) {
             console.error(e.stack);
             throw e;
