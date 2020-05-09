@@ -1,6 +1,6 @@
 {
   "name": "mofron-event-visiclick",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "visible switch click event for mofron",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/simpart/mofron-event-visiclick.git"
   },
   "dependencies": {
-      "mofron-event-click" : ""
+    "mofron-event-click": ""
   },
   "keywords": [
     "front-end"

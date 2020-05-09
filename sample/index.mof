@@ -1,0 +1,8 @@
+<setting>
+    <tag load="mofron-comp-text">Text</tag>
+    <tag load="mofron-comp-button">Button</tag>
+    <tag load="mofron-event-visiclick">vsClick</tag>
+</setting>
+
+<Text name=tes>Test</Text>
+<Button event=vsClick:("switch",@tes)>switch</Button>

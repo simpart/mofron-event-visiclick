@@ -1,7 +1,7 @@
 /**
  * @file mofron-event-visiclick/index.js
  * @brief visible switch click event for mofron
- * @author simpart
+ * @license MIT
  */
 const Click = require('mofron-event-click');
 
@@ -9,9 +9,10 @@ module.exports = class extends Click {
     /**
      * initilize event
      *
-     * @param p1 (object) event option
-     * @param p1 (string) visible mode
-     * @param p2 (Component) target component
+     * @param (mixed) dict: event option
+     *                string: visible mode
+     * @param (Component) target component
+     * @type private
      */
     constructor (p1, p2) {
         try {
@@ -72,8 +73,8 @@ module.exports = class extends Click {
     /**
      * target component setter/getter
      *
-     * @param p1 (Component) set visible target component
-     * @param p1 (undefined) call as getter
+     * @param (mixed) Component: set visible target component
+     *                undefined: call as getter
      * @return (Component) visible target component
      * @type parameter
      */
@@ -91,6 +92,7 @@ module.exports = class extends Click {
      * callback function for switch
      * 
      * @param (function) callback function
+     *                   undefined: call as getter
      * @return (function) callback function
      * @type parameter
      */
@@ -107,9 +109,10 @@ module.exports = class extends Click {
     /**
      * visible mode setter/getter
      *
-     * @param p1 (string) visible mode ('enable', 'disable', 'switch')
-     * @param p1 (undefined) call as getter
+     * @param (string) visible mode ('enable', 'disable', 'switch')
+     *                 undefined: call as getter
      * @return (string) visible mode
+     * @type parameter
      */
     mode (prm) {
         try {
