@@ -1,6 +1,6 @@
 {
   "name": "mofron-event-visiclick",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "visible switch click event for mofron",
   "main": "index.js",
   "scripts": {

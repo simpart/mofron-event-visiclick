@@ -18,12 +18,12 @@ module.exports = class extends Click {
         try {
             super();
             this.name('VisiClick');
-            this.shortForm('mode', 'tgtComp');
+            this.shortForm('visible', 'target');
 	    
 	    /* init config */
-            this.confmng().add("callback", { type: "function" });
-	    this.confmng().add("tgtComp",  { type: "Component" });
-            this.confmng().add("mode",     { type: "string", init: "switch" });
+            this.confmng().add("callback", { type: "event" });
+	    this.confmng().add("target",   { type: "Component" });
+            this.confmng().add("visible",  { type: "boolean", init: true });
 
 	    /* set config */
 	    if (0 < arguments.length) {
@@ -47,15 +47,16 @@ module.exports = class extends Click {
             this.listener(
                 (tgt, ev, vs) => {
                     try {
-                        if ('enable' === vs.mode()) {
-                            vs.tgtComp().visible(true, this.callback());
-                        } else if ('disable' === vs.mode()) {
-                            vs.tgtComp().visible(false, this.callback());
-                        } else if ('destroy' === vs.mode()) {
-                            vs.tgtComp().destroy(this.tgtParam());
-                        } else if ('switch' === vs.mode()) {
-                            vs.tgtComp().visible(!vs.tgtComp().visible(), this.callback());
-                        }
+		        vs.target().visible(vs.visible());
+                        //if ('enable' === vs.mode()) {
+                        //    vs.tgtComp().visible(true, this.callback());
+                        //} else if ('disable' === vs.mode()) {
+                        //    vs.tgtComp().visible(false, this.callback());
+                        //} else if ('destroy' === vs.mode()) {
+                        //    vs.tgtComp().destroy(this.tgtParam());
+                        //} else if ('switch' === vs.mode()) {
+                        //    vs.tgtComp().visible(!vs.tgtComp().visible(), this.callback());
+                        //}
                     } catch (e) {
                         console.error(e.stack);
                         throw e;
@@ -78,9 +79,9 @@ module.exports = class extends Click {
      * @return (Component) visible target component
      * @type parameter
      */
-    tgtComp (prm) {
+    target (prm) {
         try {
-	    let ret = this.confmng("tgtComp", prm);
+	    let ret = this.confmng("target", prm);
 	    return (null === ret) ? this.component() : ret;
         } catch (e) {
             console.error(e.stack);
@@ -96,10 +97,9 @@ module.exports = class extends Click {
      * @return (function) callback function
      * @type parameter
      */
-    callback (prm) {
+    callback (fnc,prm) {
         try {
-	    let ret = this.confmng("callback", prm);
-            return (null === ret) ? undefined : ret;
+	    return this.confmng("callback", (undefined !== fnc) ? [fnc,prm]:undefined);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -114,9 +114,9 @@ module.exports = class extends Click {
      * @return (string) visible mode
      * @type parameter
      */
-    mode (prm) {
+    visible (prm) {
         try {
-	    return this.confmng("mode", prm);
+	    return this.confmng("visible", prm);
         } catch (e) {
             console.error(e.stack);
             throw e;
